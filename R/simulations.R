@@ -1,3 +1,35 @@
+#' Simulates a portfolio of insurance policies
+#'
+#' Based on the inputs this functions will generate a table
+#' of simulates policies.
+#'
+#' @param sim_years A vector with the simulated years
+#' @param initial_policy_count The number of policies for the first simulated
+#'   year
+#' @param ptf_growth The annual rate of growth of the portfolio size (in
+#'   policy count)
+#' @param n_expo_per_policy The number of exposure associated to each policy
+#' @param policy_length The policy length in months
+#' @param initial_avg_premium The average premium per exposure at the beginning
+#'   of the first simulated year.
+#' @param premium_trend The annual rate of growth of the average premium
+#' @param rate_change_data A data frame containing the rate change information,
+#'   on row for each historical rate change.
+#'   It must contain two columns: 1) `effective_date`: the `Date` at which the
+#'   rate change has taken plance. 2) `rate_change`: the percentage increase
+#'   (if positive) or decrease (if negative) of the average premium after the
+#'   rate change.
+#'
+#' @return A data frame with a row for each simulated policy and the following
+#'   columns:
+#'
+#'   * `policy_id`: a unique policy identifier
+#'   * `inception_date`: the effective date of the simulated policy
+#'   * `expiration_date`: the expiration date
+#'   * `n_expo`: the number of exposures of the policy
+#'   * `premium`: the policy premium
+#'
+#' @export
 simulate_portfolio <- function(sim_years, initial_policy_count, ptf_growth,
                                n_expo_per_policy, policy_length,
                                initial_avg_premium, premium_trend,
