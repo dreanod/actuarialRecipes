@@ -37,7 +37,7 @@ simulate_policies <- function(initial_policy_count, sim_years, ptf_growth) {
     from = sim_years[1],
     to = sim_years,
     trend = ptf_growth
-  )
+  ) |> round()
 
   # generate policies
   generate_one_year_policy_data <- function(year, n_policies) { # <1>
@@ -62,7 +62,7 @@ simulate_expo <- function(policy_df, n_expo_per_policy) {
 calc_exp_date <- function(inception_date, policy_length) {
   lubridate::add_with_rollback(
     inception_date,
-    lubridate::months(policy_length)
+    months(policy_length)
   ) - lubridate::days(1)
 }
 
@@ -71,8 +71,10 @@ simulate_premium <- function(n_expo, initial_avg_premium) {
 }
 
 simulate_rate_change <- function(premium, inc_date, rate_change_data) {
-  purrr::pwalk(rate_change_data, function(eff_date, rate_change) {
-    premium <<- apply_rate_change(rate_change, eff_date, premium, inc_date)
+  purrr::pwalk(rate_change_data, function(effective_date, rate_change) {
+    premium <<- apply_rate_change(
+      rate_change, effective_date, premium, inc_date
+    )
   })
   premium
 }
