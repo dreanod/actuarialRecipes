@@ -1,5 +1,8 @@
 #-------- Display ------------
 
+#' Create an HTML Table to Display a Data Frame
+#'
+#' @export
 display_table <- function(df) {
   df |>
     knitr::kable() |>
