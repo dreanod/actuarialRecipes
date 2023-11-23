@@ -28,6 +28,11 @@ last_day_of_year <- function(y) {
   lubridate::ymd(paste0(y, "-12-31"))
 }
 
+period_length <- function(begin, end, unit = "year") {
+  end <- end + lubridate::days(1)
+  lubridate::interval(begin, end) / lubridate::period(1, units = unit)
+}
+
 #------- On-Leveling -----------
 
 apply_trend <- function(value, from, to, trend) {
