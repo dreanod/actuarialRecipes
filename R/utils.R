@@ -28,6 +28,15 @@ last_day_of_year <- function(y) {
   lubridate::ymd(paste0(y, "-12-31"))
 }
 
+#' Calculates the duration between two dates
+#'
+#' @param begin beginning date of the period
+#' @param end end date of the period
+#' @param unit unit of measure for the duration of the period.
+#'   Can be seconds, minutes, hours, days, weeks, months, or
+#'   years.
+#'
+#' @export
 period_length <- function(begin, end, unit = "year") {
   end <- end + lubridate::days(1)
   lubridate::interval(begin, end) / lubridate::period(1, units = unit)
