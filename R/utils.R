@@ -17,7 +17,7 @@ display_table <- function(df) {
 seq_date_in_year <- function(y, n) {
   from <- first_day_of_year(y)
   to <- first_day_of_year(y + 1)
-  seq(from, to, length.out = n + 1)[1:n]
+  round(seq(from, to, length.out = n + 1)[1:n])
 }
 
 first_day_of_year <- function(y) {

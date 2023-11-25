@@ -33,7 +33,7 @@ test_that("same results as in blog post", {
 
   expect_equal(
     round(mean(policy_df$expiration_date)),
-    lubridate::ymd("2013-07-06")
+    lubridate::ymd("2013-07-07")
   )
 
   #---------------------------------------------------------------------------
@@ -56,7 +56,7 @@ test_that("same results as in blog post", {
     rate_changes
   )
 
-  expect_equal(round(sum(policy_df$premium)), 7122656)
+  expect_equal(round(sum(policy_df$premium)), 7122947)
 
   #---------------------------------------------------------------------------
   start_of_period <- first_day_of_year(simulated_years[1])
@@ -67,7 +67,7 @@ test_that("same results as in blog post", {
     premium_trend
   )
 
-  expect_equal(round(sum(policy_df$premium)), 7577980)
+  expect_equal(round(sum(policy_df$premium)), 7578297)
 
   #---------------------------------------------------------------------------
   policy_df <- simulate_portfolio(
@@ -84,9 +84,9 @@ test_that("same results as in blog post", {
   expect_equal(nrow(policy_df), 78022)
   expect_equal(
     round(mean(policy_df$expiration_date)),
-    lubridate::ymd("2013-07-06")
+    lubridate::ymd("2013-07-07")
   )
   expect_equal(sum(policy_df$n_expo), 78022)
-  expect_equal(round(sum(policy_df$premium)), 7577980)
+  expect_equal(round(sum(policy_df$premium)), 7578297)
 
 })

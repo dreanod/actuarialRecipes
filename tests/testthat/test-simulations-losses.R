@@ -39,6 +39,6 @@ test_that("same results as blog post", {
   )
   
   expect_equal(length(loss_count), nrow(policy_df))
-  expect_equal(sum(loss_count), 2191)
+  expect_equal(sum(loss_count), 2195)
 
 })
