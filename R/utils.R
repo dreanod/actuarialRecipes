@@ -1,7 +1,7 @@
 #-------- Display ------------
 
 #' Create an HTML Table to Display a Data Frame
-#'
+#' @param df data frame to display
 #' @export
 display_table <- function(df) {
   df |>
@@ -14,16 +14,27 @@ display_table <- function(df) {
 
 #--------- Dates ------------
 
+#' Sample uniformly dates withing a given year
+#'
+#' @param y the year from which the dates are sampled
+#' @param n the number of dates to sample in the year
+#' @return a vector of dates
+#' @export
 seq_date_in_year <- function(y, n) {
   from <- first_day_of_year(y)
   to <- first_day_of_year(y + 1)
   round(seq(from, to, length.out = n + 1)[1:n])
 }
 
+#' Return the first/last day of a given year as a Date
+#'
+#' @param y the year for which to return the first/last day
+#' @export
 first_day_of_year <- function(y) {
   lubridate::ymd(paste0(y, "-01-01"))
 }
 
+#' @rdname first_day_of_year
 last_day_of_year <- function(y) {
   lubridate::ymd(paste0(y, "-12-31"))
 }

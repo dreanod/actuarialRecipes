@@ -6,6 +6,9 @@
 \usage{
 display_table(df)
 }
+\arguments{
+\item{df}{data frame to display}
+}
 \description{
 Create an HTML Table to Display a Data Frame
 }

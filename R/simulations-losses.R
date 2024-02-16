@@ -30,6 +30,6 @@ simulate_loss_count <- function(portfolio, initial_freq, initial_freq_date,
   )
   frequency_per_policy <- annual_frequency_per_policy * policy_duration
 
-  loss_count <- rpois(nrow(portfolio), frequency_per_policy)
+  loss_count <- stats::rpois(nrow(portfolio), frequency_per_policy)
   loss_count
 }
